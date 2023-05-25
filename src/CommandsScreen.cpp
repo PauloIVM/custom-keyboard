@@ -87,5 +87,8 @@ int CommandsScreen::showScreen() {
 
     if (buffer[0] != NULL) { this->tft->print(buffer); }
     if (tp.z < configs.MINPRESSURE || tp.z > configs.MAXPRESSURE) { return 1; }
-    if (tp.x > 450 && tp.x < 570  && tp.y > 450 && tp.y < 570) { return 0; }
+    if (tp.x > 450 && tp.x < 570  && tp.y > 450 && tp.y < 570) {
+        this->tft->vertScroll(top * ht, lines * ht, 0);
+        return 0;
+    }
 }

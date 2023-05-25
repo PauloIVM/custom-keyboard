@@ -4,12 +4,14 @@
 #include "Arduino.h"
 #include "pins_arduino.h"
 #include "configs.h"
+// What???
+// #include "MessageManager.h"
 
 DrawingScreen::DrawingScreen(MCUFRIEND_kbv *tft, TouchScreen *ts) {
     this->tft = tft;
     this->ts = ts;
     this->currentcolor = configs.RED;
-    this->messageManager = MessageManager();
+    // this->messageManager = MessageManager();
 }
 
 void DrawingScreen::loadScreen(void) {
@@ -36,7 +38,7 @@ void DrawingScreen::showScreen() {
         return;
     }
 
-    this->messageManager.sendTSPoint(tp);
+    // this->messageManager.sendTSPoint(tp);
 
     // char buffer[255] = [];
     // this->messageManager.readString(buffer);

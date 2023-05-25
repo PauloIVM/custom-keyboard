@@ -4,12 +4,12 @@
 #include <HardwareSerial.h>
 #include <string.h>
 
-MessageManager::MessageManager() {}
+MessageManager::MessageManager(void) {}
 
 void MessageManager::send(char *str) {}
 
 void MessageManager::sendTSPoint(TSPoint tp) {
-  Serial.println("Z: " + String(tp.z) + " X: " + String(tp.x) + " Y: " + String(tp.y));
+    Serial.println("Z: " + String(tp.z) + " X: " + String(tp.x) + " Y: " + String(tp.y));
 }
 
 void MessageManager::readString(char buffer[]) {

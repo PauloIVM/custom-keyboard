@@ -1,6 +1,6 @@
 #include <MCUFRIEND_kbv.h>
 #include <TouchScreen.h>
-#include "MessageManager.h"
+// #include "MessageManager.h"
 
 class DrawingScreen {
     public:
@@ -11,6 +11,6 @@ class DrawingScreen {
         int16_t getBoxSize(void);
         MCUFRIEND_kbv *tft;
         TouchScreen *ts;
-        MessageManager messageManager;
+        // MessageManager messageManager;
         uint16_t oldcolor, currentcolor;
 };

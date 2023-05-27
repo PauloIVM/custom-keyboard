@@ -6,6 +6,9 @@ struct {
     const int BLACK = 0x0000;
     const int BLUE = 0x001F;
     const int RED = 0xF800;
+    const int MAROON = 0x7800;
+    const int ORANGE = 0xFD20;
+    const int GREENYELLOW = 0xAFE5;
     const int GREEN = 0x07E0;
     const int CYAN = 0x07FF;
     const int MAGENTA = 0xF81F;

@@ -35,14 +35,14 @@ void loop(void) {
     Keyboard.releaseAll();
   }
   if (digitalRead(BUTTON_1) == LOW && button1Pressed == false) {
-    joysticR.toggleRange();
+    Mouse.click();
     button1Pressed = true;
   }
   if (digitalRead(BUTTON_1) == HIGH && button1Pressed == true) {
     button1Pressed = false;
   }
   if (digitalRead(BUTTON_2) == LOW && button2Pressed == false) {
-    Mouse.click();
+    joysticR.toggleRange();
     button2Pressed = true;
   }
   if (digitalRead(BUTTON_2) == HIGH && button2Pressed == true) {

@@ -6,10 +6,10 @@ enum KeyEventType {
 };
 #endif
 
-class KeyboardMatrix {
+class KeyboardListenner {
     public:
-        KeyboardMatrix(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c));
-        void printCellsPressed();
+        KeyboardListenner(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c));
+        void scan();
     private:
         void fillCols(int value);
         int* rowPins;

@@ -1,4 +1,4 @@
-#include "KeyboardMatrix.h"
+#include "KeyboardListenner.h"
 
 int rowPins[6] = {9, 4, 8, 6, 7, 5};
 int colPins[7] = {16, 19, 14, 20, 10, 18, 15};
@@ -22,7 +22,7 @@ void onKeyRelease(int r, int c) {
     Serial.println(" ] Released");
 }
 
-KeyboardMatrix keyboardmatrix = KeyboardMatrix(rowPins, rowPinsLength, colPins, colPinsLength, onKeyPress, onKeyRelease);
+KeyboardListenner keyboardListenner = KeyboardListenner(rowPins, rowPinsLength, colPins, colPinsLength, onKeyPress, onKeyRelease);
 
 void setup(void) {
     Serial.begin(9600);
@@ -31,7 +31,7 @@ void setup(void) {
 }
 
 void loop(void) {
-    keyboardmatrix.printCellsPressed();
+    keyboardListenner.scan();
 }
 
 void setPinModes(int pins[], int mode, int length) {

@@ -1,7 +1,7 @@
-#include "KeyboardMatrix.h"
+#include "KeyboardListenner.h"
 #include "Arduino.h"
 
-KeyboardMatrix::KeyboardMatrix(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c)) {
+KeyboardListenner::KeyboardListenner(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c)) {
     this->rowPins = rowPins;
     this->rowPinsLength = rowPinsLength;
     this->colPins = colPins;
@@ -19,7 +19,7 @@ KeyboardMatrix::KeyboardMatrix(int* rowPins, int rowPinsLength, int* colPins, in
     }
 }
 
-void KeyboardMatrix::printCellsPressed() {
+void KeyboardListenner::scan() {
     for (int rowIndex = 0; rowIndex < rowPinsLength; rowIndex++) {
         fillCols(HIGH);
         for (int colIndex = 0; colIndex < colPinsLength; colIndex++) {
@@ -38,7 +38,7 @@ void KeyboardMatrix::printCellsPressed() {
     }
 }
 
-void KeyboardMatrix::fillCols(int value) {
+void KeyboardListenner::fillCols(int value) {
     for (int i = 0; i < this->colPinsLength; i++) {
         digitalWrite(this->colPins[i], value);
     }

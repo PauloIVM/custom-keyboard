@@ -6,10 +6,13 @@ KeyboardMatrix::KeyboardMatrix(int* rowPins, int rowPinsLength, int* colPins, in
     this->rowPinsLength = rowPinsLength;
     this->colPins = colPins;
     this->colPinsLength = colPinsLength;
-    // TODO: Refatorar para q essa config de max 100 keys não fique hard-coded
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            keysStateMatrix[i][j] = HIGH;
+    this->keysStateMatrix = (int**)malloc(rowPinsLength * sizeof(int*));
+    for (int i = 0; i < rowPinsLength; ++i) {
+        this->keysStateMatrix[i] = (int*)malloc(colPinsLength * sizeof(int));
+    }
+    for (int i = 0; i < rowPinsLength; ++i) {
+        for (int j = 0; j < colPinsLength; ++j) {
+            this->keysStateMatrix[i][j] = HIGH;
         }
     }
 }

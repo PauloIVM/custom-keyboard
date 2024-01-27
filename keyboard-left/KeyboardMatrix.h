@@ -16,6 +16,5 @@ class KeyboardMatrix {
         int rowPinsLength;
         int* colPins;
         int colPinsLength;
-        // TODO: Refatorar para q essa config de max 100 keys não fique hard-coded
-        int keysStateMatrix[10][10];
+        int** keysStateMatrix;
 };

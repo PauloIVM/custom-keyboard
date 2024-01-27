@@ -8,14 +8,14 @@ enum KeyEventType {
 
 class KeyboardListenner {
     public:
-        KeyboardListenner(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c));
+        KeyboardListenner(int* rowPins, int rowLength, int* colPins, int colLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c));
         void scan();
     private:
         void fillCols(int value);
         int* rowPins;
-        int rowPinsLength;
+        int rowLength;
         int* colPins;
-        int colPinsLength;
+        int colLength;
         int** keysStateMatrix;
         void (*onPressCallback)(int r, int c);
         void (*onReleaseCallback)(int r, int c);

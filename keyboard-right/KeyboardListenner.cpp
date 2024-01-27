@@ -1,28 +1,28 @@
 #include "KeyboardListenner.h"
 #include "Arduino.h"
 
-KeyboardListenner::KeyboardListenner(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c)) {
+KeyboardListenner::KeyboardListenner(int* rowPins, int rowLength, int* colPins, int colLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c)) {
     this->rowPins = rowPins;
-    this->rowPinsLength = rowPinsLength;
+    this->rowLength = rowLength;
     this->colPins = colPins;
-    this->colPinsLength = colPinsLength;
+    this->colLength = colLength;
     this->onPressCallback = onPressCallback;
     this->onReleaseCallback = onReleaseCallback;
-    this->keysStateMatrix = (int**)malloc(rowPinsLength * sizeof(int*));
-    for (int i = 0; i < rowPinsLength; ++i) {
-        this->keysStateMatrix[i] = (int*)malloc(colPinsLength * sizeof(int));
+    this->keysStateMatrix = (int**)malloc(rowLength * sizeof(int*));
+    for (int i = 0; i < rowLength; ++i) {
+        this->keysStateMatrix[i] = (int*)malloc(colLength * sizeof(int));
     }
-    for (int i = 0; i < rowPinsLength; ++i) {
-        for (int j = 0; j < colPinsLength; ++j) {
+    for (int i = 0; i < rowLength; ++i) {
+        for (int j = 0; j < colLength; ++j) {
             this->keysStateMatrix[i][j] = HIGH;
         }
     }
 }
 
 void KeyboardListenner::scan() {
-    for (int rowIndex = 0; rowIndex < rowPinsLength; rowIndex++) {
+    for (int rowIndex = 0; rowIndex < rowLength; rowIndex++) {
         fillCols(HIGH);
-        for (int colIndex = 0; colIndex < colPinsLength; colIndex++) {
+        for (int colIndex = 0; colIndex < colLength; colIndex++) {
             if (colIndex != 0) digitalWrite(colPins[colIndex - 1], HIGH);
             digitalWrite(colPins[colIndex], LOW);
             if (digitalRead(rowPins[rowIndex]) == LOW && keysStateMatrix[rowIndex][colIndex] == HIGH) {
@@ -39,7 +39,7 @@ void KeyboardListenner::scan() {
 }
 
 void KeyboardListenner::fillCols(int value) {
-    for (int i = 0; i < this->colPinsLength; i++) {
+    for (int i = 0; i < this->colLength; i++) {
         digitalWrite(this->colPins[i], value);
     }
 }

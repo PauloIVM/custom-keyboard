@@ -1,11 +1,13 @@
 #include "KeyboardMatrix.h"
 #include "Arduino.h"
 
-KeyboardMatrix::KeyboardMatrix(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength) {
+KeyboardMatrix::KeyboardMatrix(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c)) {
     this->rowPins = rowPins;
     this->rowPinsLength = rowPinsLength;
     this->colPins = colPins;
     this->colPinsLength = colPinsLength;
+    this->onPressCallback = onPressCallback;
+    this->onReleaseCallback = onReleaseCallback;
     this->keysStateMatrix = (int**)malloc(rowPinsLength * sizeof(int*));
     for (int i = 0; i < rowPinsLength; ++i) {
         this->keysStateMatrix[i] = (int*)malloc(colPinsLength * sizeof(int));
@@ -24,19 +26,11 @@ void KeyboardMatrix::printCellsPressed() {
             if (colIndex != 0) digitalWrite(colPins[colIndex - 1], HIGH);
             digitalWrite(colPins[colIndex], LOW);
             if (digitalRead(rowPins[rowIndex]) == LOW && keysStateMatrix[rowIndex][colIndex] == HIGH) {
-                Serial.print("[ Row: ");
-                Serial.print(rowIndex, DEC);
-                Serial.print(", Col: ");
-                Serial.print(colIndex, DEC);
-                Serial.println(" ] Pressed");
+                this->onPressCallback(rowIndex, colIndex);
                 keysStateMatrix[rowIndex][colIndex] = LOW;
             }
             if (digitalRead(rowPins[rowIndex]) == HIGH && keysStateMatrix[rowIndex][colIndex] == LOW) {
-                Serial.print("[ Row: ");
-                Serial.print(rowIndex, DEC);
-                Serial.print(", Col: ");
-                Serial.print(colIndex, DEC);
-                Serial.println(" ] Released");
+                this->onReleaseCallback(rowIndex, colIndex);
                 keysStateMatrix[rowIndex][colIndex] = HIGH;
             }
         }

@@ -8,7 +8,7 @@ enum KeyEventType {
 
 class KeyboardMatrix {
     public:
-        KeyboardMatrix(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength);
+        KeyboardMatrix(int* rowPins, int rowPinsLength, int* colPins, int colPinsLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c));
         void printCellsPressed();
     private:
         void fillCols(int value);
@@ -17,4 +17,6 @@ class KeyboardMatrix {
         int* colPins;
         int colPinsLength;
         int** keysStateMatrix;
+        void (*onPressCallback)(int r, int c);
+        void (*onReleaseCallback)(int r, int c);
 };

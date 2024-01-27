@@ -36,6 +36,8 @@ void KeyboardListenner::scan() {
         }
         fillCols(LOW);
     }
+    // INFO: This delay avoid double-clicks
+    delay(20);
 }
 
 void KeyboardListenner::fillCols(int value) {

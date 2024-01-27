@@ -6,15 +6,24 @@ const int colLength = 7;
 int rowPins[rowLength] = {9, 4, 8, 6, 7, 5};
 int colPins[colLength] = {15, 18, 10, 20, 14, 19, 16};
 
-// TODO: Talvez inverter a ordem do 'colPins' pro desenho do keyboardMap não ficar
-// rotacionado ou espelhado.
+// TODO: Mapear todas as teclas. Q protocolo é esse em específico? Como saber o inteiro
+// referente a cada tecla? Pesquisar no chatGPT e usar a diretiva "#define" pra cada uma das
+// teclas q não está mapeada no "Keyboard.h"
+/**
+ * (uint8_t)';' = 'ç'
+ * (uint8_t)'ç' = 2
+ * (uint8_t)'\'' = ~
+ * (uint8_t)'/' = ;
+ * 
+*/
+
 uint8_t keyboardMap[rowLength][colLength] = {
     {0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0},
-    {(uint8_t)'y', (uint8_t)'u', (uint8_t)'i', (uint8_t)'o', (uint8_t)'p', (uint8_t)'\'', 0},
-    {0, 0, 0, 0, 0, 0, KEY_KP_ENTER},
-    {0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0},
+    {(uint8_t)'7', (uint8_t)'8', (uint8_t)'9', (uint8_t)'0', (uint8_t)'-', (uint8_t)'=', KEY_BACKSPACE},
+    {(uint8_t)'y', (uint8_t)'u', (uint8_t)'i', (uint8_t)'o', (uint8_t)'p', 0, 0},
+    {(uint8_t)'h', (uint8_t)'j', (uint8_t)'k', (uint8_t)'l', (uint8_t)';', (uint8_t)'\'', KEY_KP_ENTER},
+    {(uint8_t)'n', (uint8_t)'m', (uint8_t)',', (uint8_t)'.', (uint8_t)'/', 0, KEY_RIGHT_SHIFT},
+    {0, 0, 0, KEY_RIGHT_ALT, 0, 0, KEY_RIGHT_CTRL},
 };
 
 void onKeyPress(int r, int c) {

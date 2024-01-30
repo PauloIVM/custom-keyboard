@@ -1,3 +1,5 @@
+#include "KeyboardEmitter.h"
+
 #ifndef KEYBOARD_LISTENNER_H
 #define KEYBOARD_LISTENNER_H
 
@@ -25,7 +27,8 @@ enum KeyEventType {
 
 class KeyboardScanner {
     public:
-        KeyboardScanner(int* rowPins, int rowLength, int* colPins, int colLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c));
+        KeyboardScanner(int* rowPins, int rowLength, int* colPins, int colLength, const KeyboardEmitter& emitter);
+        KeyboardScanner();
         void scan();
     private:
         void fillCols(int value);
@@ -34,7 +37,6 @@ class KeyboardScanner {
         int* colPins;
         int colLength;
         int** keysStateMatrix;
-        void (*onPressCallback)(int r, int c);
-        void (*onReleaseCallback)(int r, int c);
+        KeyboardEmitter emitter;
 };
 #endif

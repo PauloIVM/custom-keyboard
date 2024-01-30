@@ -1,6 +1,4 @@
-#include "KeyboardScanner.h"
-#include "Keyboard.h"
-#include "KeyboardEmitter.h"
+#include "KeyboardHandler.h"
 
 const int rowLength = 6;
 const int colLength = 7;
@@ -8,13 +6,6 @@ const int layersLength = 2;
 int rowPins[rowLength] = {9, 4, 8, 6, 7, 5};
 int colPins[colLength] = {15, 18, 10, 20, 14, 19, 16};
 
-uint8_t*** convertStaticLayersToDynamic(uint8_t staticMatrix[rowLength][rowLength][colLength], size_t numLayers, size_t numRows, size_t numCols);
-
-// TODOs:
-//      - Receber um KeyboardEmitter no construtor do KeyboardScanner e remover a necessidade de callbacks
-//      - Criar uma terceira estrutura que abstrai e monta as duas primeiras: KeyboardHandler. Esse
-//        vai ter um keyboardHandler.begin() q chama o begin do Keyboard.h, e aí posso tentar remover
-//        a importação do Keyboard.h aqui.
 uint8_t staticLayers[layersLength][rowLength][colLength] = {
     // INFO: Layer 0
     {
@@ -36,28 +27,35 @@ uint8_t staticLayers[layersLength][rowLength][colLength] = {
     },
 };
 
+// TODO: Eu queria conseguir fazer um casting ou algo mais simples, mas n funcionou bem. Parece q
+// em C++ existe uma forma de fazer isso, pesquisar por: template <size_t Rows, size_t Cols>, daí
+// depois voltar aqui e eliminar a necessidade de ficar passando essas matrizes dinâmicas.
+uint8_t*** convertStaticLayersToDynamic(uint8_t staticMatrix[rowLength][rowLength][colLength], size_t numLayers, size_t numRows, size_t numCols);
+
 uint8_t*** layers = convertStaticLayersToDynamic(staticLayers, layersLength, rowLength, colLength);
-KeyboardEmitter keyboardEmitter = KeyboardEmitter(layers, layersLength, KEY_LAYER_UP, KEY_LAYER_DOWN);
 
-void onKeyPress(int r, int c) {
-    keyboardEmitter.press(r, c);
-}
+KeyboardHandlerConfig configs = {
+    layers,
+    layersLength,
+    KEY_LAYER_UP,
+    KEY_LAYER_DOWN,
+    rowPins,
+    rowLength,
+    colPins,
+    colLength
+};
 
-void onKeyRelease(int r, int c) {
-    keyboardEmitter.release(r, c);
-}
-
-KeyboardScanner keyboardScanner = KeyboardScanner(rowPins, rowLength, colPins, colLength, onKeyPress, onKeyRelease);
+KeyboardHandler keyboardHandler = KeyboardHandler(configs);
 
 void setup(void) {
     Serial.begin(9600);
-    Keyboard.begin();
+    keyboardHandler.begin();
     setPinModes(colPins, OUTPUT,        colLength);
     setPinModes(rowPins, INPUT_PULLUP,  rowLength);
 }
 
 void loop(void) {
-    keyboardScanner.scan();
+    keyboardHandler.exec();
 }
 
 void setPinModes(int pins[], int mode, int length) {

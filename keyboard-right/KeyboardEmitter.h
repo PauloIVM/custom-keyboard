@@ -5,6 +5,7 @@
 
 class KeyboardEmitter {
     public:
+        KeyboardEmitter();
         KeyboardEmitter(uint8_t*** layers, int layersLength, uint8_t keyLayerUp, uint8_t keyLayerDown);
         void press(int row, int column);
         void release(int row, int column);

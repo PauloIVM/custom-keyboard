@@ -6,49 +6,34 @@ const int colLength = 7;
 int rowPins[rowLength] = {9, 4, 8, 6, 7, 5};
 int colPins[colLength] = {15, 18, 10, 20, 14, 19, 16};
 
-// TODO: Mapear todas as teclas. Q protocolo é esse em específico? Como saber o inteiro
-// referente a cada tecla? Pesquisar no chatGPT e usar a diretiva "#define" pra cada uma das
-// teclas q não está mapeada no "Keyboard.h"
-/**
- * (uint8_t)';' = 'ç'
- * (uint8_t)'ç' = 2
- * (uint8_t)'\'' = ~
- * (uint8_t)'/' = ;
- * 
-*/
+// TODO: Encapsular essa lógica em um 'KeyboardEmitter', que ficará responsável por receber as layers
+// matriciais, gerenciar qual a layer está em vigor, bem como disparar os eventos para o PC. Daí
+// integrar ele aqui com através das callbacks (se der, posso tentar pensar em um design mais bonito,
+// talvez já não precise mais das callbacks, se o 'KeyboardEmitter' for uma composição dentro do
+// Listenner... aí acho q eu teria só mesmo q mudar um pouco os nomes talvez?)
+
+// TODO: Utilizar uma numeração q não faz nada pra ser a tecla KEY_INCREASE_LAYER
 
 uint8_t keyboardMap[rowLength][colLength] = {
-    {0, 0, 0, 0, 0, 0, 0},
+    {KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12},
     {(uint8_t)'7', (uint8_t)'8', (uint8_t)'9', (uint8_t)'0', (uint8_t)'-', (uint8_t)'=', KEY_BACKSPACE},
-    {(uint8_t)'y', (uint8_t)'u', (uint8_t)'i', (uint8_t)'o', (uint8_t)'p', 0, 0},
-    {(uint8_t)'h', (uint8_t)'j', (uint8_t)'k', (uint8_t)'l', (uint8_t)';', (uint8_t)'\'', KEY_KP_ENTER},
-    {(uint8_t)'n', (uint8_t)'m', (uint8_t)',', (uint8_t)'.', (uint8_t)'/', 0, KEY_RIGHT_SHIFT},
-    {0, 0, 0, KEY_RIGHT_ALT, 0, 0, KEY_RIGHT_CTRL},
+    {(uint8_t)'y', (uint8_t)'u', (uint8_t)'i', (uint8_t)'o', (uint8_t)'p', KEY_ACUTE_ACCENT, 0},
+    {(uint8_t)'h', (uint8_t)'j', (uint8_t)'k', (uint8_t)'l', KEY_CEDIL, KEY_TIL, KEY_KP_ENTER},
+    {(uint8_t)'n', (uint8_t)'m', (uint8_t)',', (uint8_t)'.', KEY_SEMICOLON, KEY_FOWARD_SLASH, KEY_RIGHT_SHIFT},
+    {KEY_SPACE, 0, 0, KEY_RIGHT_ALT, 0, 0, KEY_RIGHT_CTRL},
 };
 
 void onKeyPress(int r, int c) {
     if (keyboardMap[r][c] != 0) {
-        Serial.println("Pressed Native");
+        Serial.print("Pressed Native: ");
+        Serial.println(keyboardMap[r][c]);
         Keyboard.press(keyboardMap[r][c]);
-    } else {
-        Serial.print("[ R: ");
-        Serial.print(r, DEC);
-        Serial.print(", C: ");
-        Serial.print(c, DEC);
-        Serial.println(" ] Pressed");
     }
 }
 
 void onKeyRelease(int r, int c) {
     if (keyboardMap[r][c] != 0) {
-        Serial.println("Released Native");
         Keyboard.release(keyboardMap[r][c]);
-    } else {
-        Serial.print("[ R: ");
-        Serial.print(r, DEC);
-        Serial.print(", C: ");
-        Serial.print(c, DEC);
-        Serial.println(" ] Released");
     }
 }
 

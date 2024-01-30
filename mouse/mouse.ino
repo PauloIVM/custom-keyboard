@@ -19,9 +19,13 @@ void setup(void) {
     pinMode(BUTTON_LEFT_PIN, INPUT_PULLUP);
     pinMode(BUTTON_MID_PIN, INPUT_PULLUP);
     pinMode(BUTTON_RIGHT_PIN, INPUT_PULLUP);
-    joysticL.setRange(2);
+    // INFO: Unfortunately my joystick has some problem with resistance floating between 500-700 ohms. That's why
+    // I'm using Range as 1 to avoid bugs. Fix the hardware and change here later.
+    joysticL.setRange(1);
 }
 
+// TODO: Criar distinção do press e release.. preciso disso por exemplo para selecionar texto
+// através do mouse.
 void loop(void) {
     int x = joysticR.readX();
     int y = joysticR.readY();

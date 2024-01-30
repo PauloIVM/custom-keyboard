@@ -1,3 +1,5 @@
+#include "KeyboardEmitter.h"
+
 #ifndef KEYBOARD_LISTENNER_H
 #define KEYBOARD_LISTENNER_H
 
@@ -15,24 +17,26 @@
 #define KEY_BACKSLASH     0xEC
 #define KEY_FOWARD_SLASH  0xDC
 #define KEY_SPACE         0xB4
+#define KEY_LAYER_UP      0x01
+#define KEY_LAYER_DOWN    0x02
 
 enum KeyEventType {
     pressed,
     released
 };
 
-class KeyboardListenner {
+class KeyboardScanner {
     public:
-        KeyboardListenner(int* rowPins, int rowLength, int* colPins, int colLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c));
+        KeyboardScanner(int* rowPins, int rowsLength, int* colPins, int colsLength, const KeyboardEmitter& emitter);
+        KeyboardScanner();
         void scan();
     private:
         void fillCols(int value);
         int* rowPins;
-        int rowLength;
+        int rowsLength;
         int* colPins;
-        int colLength;
+        int colsLength;
         int** keysStateMatrix;
-        void (*onPressCallback)(int r, int c);
-        void (*onReleaseCallback)(int r, int c);
+        KeyboardEmitter emitter;
 };
 #endif

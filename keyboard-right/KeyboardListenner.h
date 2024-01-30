@@ -15,6 +15,8 @@
 #define KEY_BACKSLASH     0xEC
 #define KEY_FOWARD_SLASH  0xDC
 #define KEY_SPACE         0xB4
+#define KEY_LAYER_UP      0x01
+#define KEY_LAYER_DOWN    0x02
 
 enum KeyEventType {
     pressed,

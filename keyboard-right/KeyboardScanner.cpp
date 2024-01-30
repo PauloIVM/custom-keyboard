@@ -1,32 +1,32 @@
 #include "KeyboardScanner.h"
 
-KeyboardScanner::KeyboardScanner(int* rowPins, int rowLength, int* colPins, int colLength, const KeyboardEmitter& emitter) {
+KeyboardScanner::KeyboardScanner(int* rowPins, int rowsLength, int* colPins, int colsLength, const KeyboardEmitter& emitter) {
     this->rowPins = rowPins;
-    this->rowLength = rowLength;
+    this->rowsLength = rowsLength;
     this->colPins = colPins;
-    this->colLength = colLength;
+    this->colsLength = colsLength;
     this->emitter = emitter;
-    this->keysStateMatrix = (int**)malloc(rowLength * sizeof(int*));
-    for (int i = 0; i < rowLength; ++i) {
-        this->keysStateMatrix[i] = (int*)malloc(colLength * sizeof(int));
+    this->keysStateMatrix = (int**)malloc(rowsLength * sizeof(int*));
+    for (int i = 0; i < rowsLength; ++i) {
+        this->keysStateMatrix[i] = (int*)malloc(colsLength * sizeof(int));
     }
-    for (int i = 0; i < rowLength; ++i) {
-        for (int j = 0; j < colLength; ++j) {
+    for (int i = 0; i < rowsLength; ++i) {
+        for (int j = 0; j < colsLength; ++j) {
             this->keysStateMatrix[i][j] = HIGH;
         }
     }
 }
 
 KeyboardScanner::KeyboardScanner() {
-    this->rowLength = 0;
-    this->colLength = 0;
+    this->rowsLength = 0;
+    this->colsLength = 0;
 }
 
 void KeyboardScanner::scan() {
-    if (this->rowLength == 0 || this->colLength == 0) { return; }
-    for (int rowIndex = 0; rowIndex < rowLength; rowIndex++) {
+    if (this->rowsLength == 0 || this->colsLength == 0) { return; }
+    for (int rowIndex = 0; rowIndex < rowsLength; rowIndex++) {
         fillCols(HIGH);
-        for (int colIndex = 0; colIndex < colLength; colIndex++) {
+        for (int colIndex = 0; colIndex < colsLength; colIndex++) {
             if (colIndex != 0) digitalWrite(colPins[colIndex - 1], HIGH);
             digitalWrite(colPins[colIndex], LOW);
             if (digitalRead(rowPins[rowIndex]) == LOW && keysStateMatrix[rowIndex][colIndex] == HIGH) {
@@ -45,7 +45,7 @@ void KeyboardScanner::scan() {
 }
 
 void KeyboardScanner::fillCols(int value) {
-    for (int i = 0; i < this->colLength; i++) {
+    for (int i = 0; i < this->colsLength; i++) {
         digitalWrite(this->colPins[i], value);
     }
 }

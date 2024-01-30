@@ -27,15 +27,15 @@ enum KeyEventType {
 
 class KeyboardScanner {
     public:
-        KeyboardScanner(int* rowPins, int rowLength, int* colPins, int colLength, const KeyboardEmitter& emitter);
+        KeyboardScanner(int* rowPins, int rowsLength, int* colPins, int colsLength, const KeyboardEmitter& emitter);
         KeyboardScanner();
         void scan();
     private:
         void fillCols(int value);
         int* rowPins;
-        int rowLength;
+        int rowsLength;
         int* colPins;
-        int colLength;
+        int colsLength;
         int** keysStateMatrix;
         KeyboardEmitter emitter;
 };

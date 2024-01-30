@@ -1,12 +1,12 @@
 #include "KeyboardHandler.h"
 
-const int rowLength = 6;
-const int colLength = 7;
+const int rowsLength = 6;
+const int colsLength = 7;
 const int layersLength = 2;
-int rowPins[rowLength] = {9, 4, 8, 6, 7, 5};
-int colPins[colLength] = {15, 18, 10, 20, 14, 19, 16};
+int rowPins[rowsLength] = {9, 4, 8, 6, 7, 5};
+int colPins[colsLength] = {15, 18, 10, 20, 14, 19, 16};
 
-uint8_t layers[layersLength][rowLength][colLength] = {
+uint8_t layers[layersLength][rowsLength][colsLength] = {
     // INFO: Layer 0
     {
         {KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12},
@@ -34,22 +34,13 @@ KeyboardHandlerConfig configs = {
     colPins,
 };
 
-KeyboardHandler keyboardHandler = KeyboardHandler(layers, configs);
+KeyboardHandler<layersLength, rowsLength, colsLength> keyboardHandler(layers, configs);
 
 void setup(void) {
     Serial.begin(9600);
     keyboardHandler.begin();
-    // TODO: Mover esses setPinModes para dentro do key-handler.begin ?
-    setPinModes(colPins, OUTPUT,        colLength);
-    setPinModes(rowPins, INPUT_PULLUP,  rowLength);
 }
 
 void loop(void) {
     keyboardHandler.exec();
-}
-
-void setPinModes(int pins[], int mode, int length) {
-    for (int i = 0; i < length; i++) {
-        pinMode(pins[i], mode);
-    }
 }

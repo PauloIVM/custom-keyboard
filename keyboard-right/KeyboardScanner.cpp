@@ -1,7 +1,7 @@
-#include "KeyboardListenner.h"
+#include "KeyboardScanner.h"
 #include "Arduino.h"
 
-KeyboardListenner::KeyboardListenner(int* rowPins, int rowLength, int* colPins, int colLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c)) {
+KeyboardScanner::KeyboardScanner(int* rowPins, int rowLength, int* colPins, int colLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c)) {
     this->rowPins = rowPins;
     this->rowLength = rowLength;
     this->colPins = colPins;
@@ -19,7 +19,7 @@ KeyboardListenner::KeyboardListenner(int* rowPins, int rowLength, int* colPins, 
     }
 }
 
-void KeyboardListenner::scan() {
+void KeyboardScanner::scan() {
     for (int rowIndex = 0; rowIndex < rowLength; rowIndex++) {
         fillCols(HIGH);
         for (int colIndex = 0; colIndex < colLength; colIndex++) {
@@ -40,7 +40,7 @@ void KeyboardListenner::scan() {
     delay(20);
 }
 
-void KeyboardListenner::fillCols(int value) {
+void KeyboardScanner::fillCols(int value) {
     for (int i = 0; i < this->colLength; i++) {
         digitalWrite(this->colPins[i], value);
     }

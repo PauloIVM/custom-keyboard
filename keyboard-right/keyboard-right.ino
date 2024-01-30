@@ -1,4 +1,4 @@
-#include "KeyboardListenner.h"
+#include "KeyboardScanner.h"
 #include "Keyboard.h"
 #include "KeyboardEmitter.h"
 
@@ -10,6 +10,11 @@ int colPins[colLength] = {15, 18, 10, 20, 14, 19, 16};
 
 uint8_t*** convertStaticLayersToDynamic(uint8_t staticMatrix[rowLength][rowLength][colLength], size_t numLayers, size_t numRows, size_t numCols);
 
+// TODOs:
+//      - Receber um KeyboardEmitter no construtor do KeyboardScanner e remover a necessidade de callbacks
+//      - Criar uma terceira estrutura que abstrai e monta as duas primeiras: KeyboardHandler. Esse
+//        vai ter um keyboardHandler.begin() q chama o begin do Keyboard.h, e aí posso tentar remover
+//        a importação do Keyboard.h aqui.
 uint8_t staticLayers[layersLength][rowLength][colLength] = {
     // INFO: Layer 0
     {
@@ -42,7 +47,7 @@ void onKeyRelease(int r, int c) {
     keyboardEmitter.release(r, c);
 }
 
-KeyboardListenner keyboardListenner = KeyboardListenner(rowPins, rowLength, colPins, colLength, onKeyPress, onKeyRelease);
+KeyboardScanner keyboardScanner = KeyboardScanner(rowPins, rowLength, colPins, colLength, onKeyPress, onKeyRelease);
 
 void setup(void) {
     Serial.begin(9600);
@@ -52,7 +57,7 @@ void setup(void) {
 }
 
 void loop(void) {
-    keyboardListenner.scan();
+    keyboardScanner.scan();
 }
 
 void setPinModes(int pins[], int mode, int length) {

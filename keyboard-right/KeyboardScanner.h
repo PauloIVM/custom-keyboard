@@ -23,9 +23,9 @@ enum KeyEventType {
     released
 };
 
-class KeyboardListenner {
+class KeyboardScanner {
     public:
-        KeyboardListenner(int* rowPins, int rowLength, int* colPins, int colLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c));
+        KeyboardScanner(int* rowPins, int rowLength, int* colPins, int colLength, void (*onPressCallback)(int r, int c), void (*onReleaseCallback)(int r, int c));
         void scan();
     private:
         void fillCols(int value);

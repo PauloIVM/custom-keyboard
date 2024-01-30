@@ -1,7 +1,7 @@
 #include "Mouse.h"
 #include "Keyboard.h"
-#include "Button.h"
-#include "Joystic.h"
+#include <Button.h>
+#include <Joystic.h>
 
 #define BUTTON_LEFT_PIN 2
 #define BUTTON_MID_PIN 3

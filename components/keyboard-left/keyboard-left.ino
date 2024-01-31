@@ -1,31 +1,20 @@
 #include <KeyboardHandler.h>
 
-// TODO: Montar o lado esquerdo do teclado
-
 const int rowsLength = 6;
 const int colsLength = 7;
 const int layersLength = 2;
-int rowPins[rowsLength] = {9, 4, 8, 6, 7, 5};
-int colPins[colsLength] = {15, 18, 10, 20, 14, 19, 16};
+int rowPins[rowsLength] = {19, 18, 10, 16, 15, 14};
+int colPins[colsLength] = {5, 9, 3, 7, 4, 8, 6};
 
 uint8_t layers[layersLength][rowsLength][colsLength] = {
     // INFO: Layer 0
     {
-        {KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12},
-        {(uint8_t)'7', (uint8_t)'8', (uint8_t)'9', (uint8_t)'0', (uint8_t)'-', (uint8_t)'=', KEY_BACKSPACE},
-        {(uint8_t)'y', (uint8_t)'u', (uint8_t)'i', (uint8_t)'o', (uint8_t)'p', KEY_ACUTE_ACCENT, 0},
-        {(uint8_t)'h', (uint8_t)'j', (uint8_t)'k', (uint8_t)'l', KEY_CEDIL, KEY_TIL, KEY_KP_ENTER},
-        {(uint8_t)'n', (uint8_t)'m', (uint8_t)',', (uint8_t)'.', KEY_SEMICOLON, KEY_FOWARD_SLASH, KEY_RIGHT_SHIFT},
-        {0, KEY_SPACE, KEY_LAYER_UP, KEY_RIGHT_ALT, KEY_RIGHT_ALT, KEY_RIGHT_CTRL, KEY_RIGHT_CTRL},
-    },
-    // INFO: Layer 1
-    {
-        {KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12},
-        {(uint8_t)'7', (uint8_t)'8', (uint8_t)'9', (uint8_t)'0', (uint8_t)'-', (uint8_t)'=', KEY_BACKSPACE},
-        {(uint8_t)'y', (uint8_t)'u', KEY_UP_ARROW, (uint8_t)'o', (uint8_t)'p', KEY_ACUTE_ACCENT, 0},
-        {(uint8_t)'h', KEY_LEFT_ARROW, KEY_DOWN_ARROW, KEY_RIGHT_ARROW, KEY_CEDIL, KEY_TIL, KEY_KP_ENTER},
-        {(uint8_t)'n', (uint8_t)'m', (uint8_t)',', (uint8_t)'.', KEY_SEMICOLON, KEY_FOWARD_SLASH, KEY_RIGHT_SHIFT},
-        {0, KEY_SPACE, KEY_LAYER_UP, KEY_RIGHT_ALT, KEY_RIGHT_ALT, KEY_RIGHT_CTRL, KEY_RIGHT_CTRL},
+        {KEY_ESC, 0, KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5},
+        {KEY_APOSTROPHE, (uint8_t)'1', (uint8_t)'2', (uint8_t)'3', (uint8_t)'4', (uint8_t)'5', (uint8_t)'6'},
+        {KEY_TAB, (uint8_t)'q', (uint8_t)'w', (uint8_t)'e', (uint8_t)'r', (uint8_t)'t', KEY_LS_BRACKET},
+        {KEY_CAPS_LOCK, (uint8_t)'a', (uint8_t)'s', (uint8_t)'d', (uint8_t)'f', (uint8_t)'g', KEY_RS_BRACKET},
+        {KEY_LEFT_SHIFT, KEY_BACKSLASH, (uint8_t)'z', (uint8_t)'x', (uint8_t)'c', (uint8_t)'v', (uint8_t)'b'},
+        {KEY_LEFT_CTRL, 0, 0, 0, KEY_LEFT_ALT, 0, KEY_SPACE},
     },
 };
 

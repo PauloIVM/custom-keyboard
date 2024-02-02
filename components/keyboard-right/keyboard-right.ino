@@ -14,7 +14,7 @@ uint8_t layers[layersLength][rowsLength][colsLength] = {
         {(uint8_t)'y', (uint8_t)'u', (uint8_t)'i', (uint8_t)'o', (uint8_t)'p', KEY_ACUTE_ACCENT, 0},
         {(uint8_t)'h', (uint8_t)'j', (uint8_t)'k', (uint8_t)'l', KEY_CEDIL, KEY_TIL, KEY_KP_ENTER},
         {KEY_FOWARD_SLASH, (uint8_t)'n', (uint8_t)'m', (uint8_t)',', (uint8_t)'.', KEY_SEMICOLON, KEY_RIGHT_SHIFT},
-        {0, KEY_RIGHT_CTRL, KEY_LAYER_UP, KEY_RIGHT_ALT, KEY_RIGHT_ALT, KEY_RIGHT_CTRL, KEY_RIGHT_CTRL},
+        {0, KEY_RIGHT_CTRL, KEY_LAYER_UP, KEY_RIGHT_ALT, KEY_RIGHT_ALT, KEY_UNKNOWN, KEY_UNKNOWN},
     },
     // INFO: Layer 1
     {
@@ -23,7 +23,7 @@ uint8_t layers[layersLength][rowsLength][colsLength] = {
         {KEY_PAGE_UP, KEY_HOME, KEY_UP_ARROW, KEY_END, KEY_DELETE, KEY_ACUTE_ACCENT, 0},
         {KEY_PAGE_DOWN, KEY_LEFT_ARROW, KEY_DOWN_ARROW, KEY_RIGHT_ARROW, KEY_CEDIL, KEY_TIL, KEY_KP_ENTER},
         {KEY_FOWARD_SLASH, (uint8_t)'n', (uint8_t)'m', (uint8_t)',', (uint8_t)'.', KEY_SEMICOLON, KEY_RIGHT_SHIFT},
-        {0, KEY_RIGHT_CTRL, KEY_LAYER_UP, KEY_RIGHT_ALT, KEY_RIGHT_ALT, KEY_RIGHT_CTRL, KEY_RIGHT_CTRL},
+        {0, KEY_RIGHT_CTRL, KEY_LAYER_UP, KEY_RIGHT_ALT, KEY_RIGHT_ALT, KEY_UNKNOWN, KEY_UNKNOWN},
     },
 };
 

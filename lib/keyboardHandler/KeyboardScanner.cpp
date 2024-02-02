@@ -25,6 +25,7 @@ KeyboardScanner::KeyboardScanner() {
 void KeyboardScanner::scan() {
     if (this->rowsLength == 0 || this->colsLength == 0) { return; }
     for (int rowIndex = 0; rowIndex < rowsLength; rowIndex++) {
+        if (hasKeyToPress(rowIndex) == false && hasKeyToRelease(rowIndex) == false) continue;
         fillCols(HIGH);
         for (int colIndex = 0; colIndex < colsLength; colIndex++) {
             if (colIndex != 0) digitalWrite(colPins[colIndex - 1], HIGH);
@@ -48,4 +49,15 @@ void KeyboardScanner::fillCols(int value) {
     for (int i = 0; i < this->colsLength; i++) {
         digitalWrite(this->colPins[i], value);
     }
+}
+
+bool KeyboardScanner::hasKeyToRelease(int rIndex) {
+    for (int cIndex = 0; cIndex < this->colsLength; cIndex++) {
+        if (keysStateMatrix[rIndex][cIndex] == LOW) return true;
+    }
+    return false;
+}
+
+bool KeyboardScanner::hasKeyToPress(int rIndex) {
+    return digitalRead(rowPins[rIndex]) == LOW;
 }

@@ -3,6 +3,7 @@
 #ifndef KEYBOARD_LISTENNER_H
 #define KEYBOARD_LISTENNER_H
 
+#define KEY_UNKNOWN       0x00
 #define KEY_CEDIL         0x3B
 #define KEY_TIL           0x27
 #define KEY_SEMICOLON     0x2F
@@ -33,6 +34,8 @@ class KeyboardScanner {
         void scan();
     private:
         void fillCols(int value);
+        bool hasKeyToRelease(int rowIndex);
+        bool hasKeyToPress(int rowIndex);
         int* rowPins;
         int rowsLength;
         int* colPins;

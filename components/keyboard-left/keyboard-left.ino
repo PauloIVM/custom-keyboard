@@ -13,8 +13,8 @@ uint8_t layers[layersLength][rowsLength][colsLength] = {
         {KEY_APOSTROPHE, (uint8_t)'1', (uint8_t)'2', (uint8_t)'3', (uint8_t)'4', (uint8_t)'5', (uint8_t)'6'},
         {KEY_TAB, (uint8_t)'q', (uint8_t)'w', (uint8_t)'e', (uint8_t)'r', (uint8_t)'t', KEY_LS_BRACKET},
         {KEY_CAPS_LOCK, (uint8_t)'a', (uint8_t)'s', (uint8_t)'d', (uint8_t)'f', (uint8_t)'g', KEY_RS_BRACKET},
-        {KEY_UNKNOWN, KEY_BACKSLASH, (uint8_t)'z', (uint8_t)'x', (uint8_t)'c', (uint8_t)'v', (uint8_t)'b'},
-        {KEY_UNKNOWN, KEY_WINDOWS, 0, KEY_LEFT_ALT, KEY_LEFT_SHIFT, 0, KEY_SPACE},
+        {KEY_WINDOWS, KEY_BACKSLASH, (uint8_t)'z', (uint8_t)'x', (uint8_t)'c', (uint8_t)'v', (uint8_t)'b'},
+        {KEY_UNKNOWN, KEY_UNKNOWN, 0, KEY_LEFT_ALT, KEY_LEFT_SHIFT, 0, KEY_SPACE},
     },
 };
 

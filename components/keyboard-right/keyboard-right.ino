@@ -37,7 +37,6 @@ KeyboardHandlerConfig configs = {
 KeyboardHandler<layersLength, rowsLength, colsLength> keyboardHandler(layers, configs);
 
 void setup(void) {
-    Serial.begin(9600);
     keyboardHandler.begin();
 }
 

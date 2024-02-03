@@ -1,12 +1,18 @@
-## My Custom Keyboard ⌨️
+# My Custom Keyboard ⌨️
 
-### 1 - O que é?
+Sumário:
+- [1 - Introdução](#1---introdução)
+- [2 - Motivação e Construção do Projeto](#2---motivação-e-construção-do-projeto)
+- [3 - Hardware](#3---hardware)
+- [4 - Software](#4---software)
+
+## 1 - Introdução
 
 Este é um projeto de software e hardware, onde eu transformei um Redragon Mitra K551 em um teclado split, 100% customizável, com layers e por fim com direito à um componenete especial q é um mouse de analógicos q fiz para usar em conjunto com o teclado.
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/e9e20eb4-6c2c-4bad-bd4b-35b1f91c0921)
 
-### 2 - Motivação e Construção do Projeto
+## 2 - Motivação e Construção do Projeto
 
 Há alguns meses eu comecei a me interessar bastante em masterizar minhas habilidades de digitação, uso de atalhos e etc. Contudo, a inércia de recorrer sempre ao mouse era (e ainda é rsrs) muito grande. Então, inicialmente eu montei apenas o mouse de analógicos, com a ideia de ter um mouse próximo das mãos q estão no teclado e que me incentivasse a não querer usá-lo em detrimento dos atalhos do teclado (se há alguma dúvida, a usabilidade desse mouse é bem inferior à de um mouse comum).
 
@@ -26,4 +32,4 @@ E assim se foi. Conforme as imagens a seguir, eu removi a placa do meu teclado, 
 
 ![20](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/c3cea75e-0690-45f5-bbdb-cb2691cca659)
 
-### 3 - Hardware
+## 3 - Hardware

@@ -33,3 +33,11 @@ E assim se foi. Conforme as imagens a seguir, eu removi a placa do meu teclado, 
 ![20](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/c3cea75e-0690-45f5-bbdb-cb2691cca659)
 
 ## 3 - Hardware
+
+### 3.1 - Mouse
+
+Como já mencionei, esse componente funciona como um mouse. Eu o configurei para que o analógico esquerdo realize scrolls horizontal e vertical; o analógico direito movimenta o cursor do mouse; dos três botões, um é o clique esquerdo do mouse, outro o direito, e por fim o terceiro ajusta a sensibilidade do mouse (como se fosse o ajuste de DPI de mouses tradicionais).
+
+Cada um dos componentes de hardware possui um pdf com o circuito esquemático. O circuito esquemático do mouse [segue aqui](https://github.com/PauloIVM/my-custom-keyboard/blob/master/components/mouse/schematic.pdf).
+
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/32c7e92b-7c6c-4cf5-81fb-abe280bd29d5)

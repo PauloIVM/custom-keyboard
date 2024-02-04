@@ -41,3 +41,21 @@ Como já mencionei, esse componente funciona como um mouse. Eu o configurei para
 Cada um dos componentes de hardware possui um pdf com o circuito esquemático. O circuito esquemático do mouse [segue aqui](https://github.com/PauloIVM/my-custom-keyboard/blob/master/components/mouse/schematic.pdf).
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/32c7e92b-7c6c-4cf5-81fb-abe280bd29d5)
+
+A construção do esquemático acima se deu com muitas gambiarras rsrs. Construí um pequeno suporte de madeira para comportar os botões e os joystics. Soldei os fios no arduino e colei tudo com cola quente e cola super bonder + bicarbonato. Além disso, com o plástico de outras partes do teclado que seriam descartadas, eu fiz um "case" para comportar todo o componente e esconder os fios.
+
+Um ponto a se destacar é que me ajudou muito ter uma microretífica, tanto para contruir a estrutura de madeira quanto a de plástico.
+
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/ba36725c-196f-4b5b-ae77-f2a70d3f7711)
+
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/8ea4626b-1666-4587-9f3c-a52034dbadba)
+
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/0f9629cb-4dca-4c3a-8606-24b883370142)
+
+### 3.2 - Teclado Esquerdo
+
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/c116f7cd-754f-46b1-9c5a-7c60562bea03)
+
+### 3.3 - Teclado Direito
+
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/4b28bf3e-3866-454b-8ad3-f744b0947da3)

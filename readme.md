@@ -121,3 +121,7 @@ Os arquivos _.ino_ em `/components/keyboard-left` e `/components/keyboard-right`
 O _KeyboardHandler_ pode ser importado de diversas formas. Você pode copiar o código e colar em cada uma das pastas `/components/keyboard-left` e `/components/keyboard-right`; ou ainda gerar um _.zip_ e adicionar a lib pela IDE do arduino; ou, caso esteja usando uma distribuição linux, pode executar um `make build` na raiz do projeto e a biblioteca será automaticamente adicionada à IDE do Arduino.
 
 Adicionado o _KeyboardHandler_, você precisará passar os pinos corretos do seu hardware e passar as camadas com os layouts de teclas que quiser. Perceba que normalmente os teclados não possuem todas as linhas com a mesma quantidade de colunas; mas isso não é um problema, serão apenas teclas na sua matriz que nunca serão clicadas.
+
+Você poderá passar quantas camadas desejar, bastando ajustar a dimensão em `layersLength`. O número de linhas e colunas também pode ser personalizado. Por fim, para trocar de camada, basta escolher um botão na matriz e passar a key `KEY_LAYER_UP` ou `KEY_LAYER_DOWN`, assim esses botões serão responsáveis por trocar de layer (semelhante a um botão "fn").
+
+Na branch master você encontrará as layers que eu tenho utilizado no momento, isto poderá ajudar a tirar quaisquer dúvidas.

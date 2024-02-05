@@ -77,7 +77,7 @@ Um ponto a se destacar é que me ajudou muito ter uma microretífica, tanto para
 
 ### 3.2 - Teclado
 
-Para a contrução do lado esquerdo e direito do teclado, montei um circuito matricial de diodos. A ideia é que se cada tecla fosse ser um input PULL_UP no arduino, então iria necessitar mais pinos do que o arduino tem disponível.
+Para a contrução do lado esquerdo e direito do teclado, montei um circuito matricial de diodos para cada um. A ideia de se usar uma matriz é economizar pinos, pois se cada tecla fosse ser um input, então seria preciso mais pinos do que o arduino tem disponível.
 
 Os diodos são necessários para evitar um problema típico de teclados matriciais que é o _ghosting_. Esse problema ocorre quando múltiplas teclas são pressionadas com algum tipo de triangulação, fazendo com que uma não pressionada seja tida como pressionada.
 
@@ -89,9 +89,18 @@ Repare que na linha R1 nós temos o botão mais à direita pressionado (fechado)
 
 Assim, num primeiro momento, nós podemos fazer uma varredura buscando alguma linha com estado lógico LOW. Caso encontremos, paramos essa varredura e começaremos uma inspeção nessa linha para decobrirmos quais colunas nessa linha estão pressionadas.
 
+Supondo que encontramos alguma linha com nível lógico LOW, agora nós vamos fazer uma varredura nas colunas e conferir quais colunas mudam o estado da linha. Para isso, inicialmente nós jogamos todas as colunas pra HIGH, conforme a imagem a seguir; isso fará com que independentemente do botão estar aberto ou fechado, o valor da linha se mantenha em HIGH.
+
+(adicionar imagem)
+
+Agora, nós vamos iterando coluna por coluna... jogando cada uma delas pra LOW. As colunas que em LOW fizerem mudar o estado da linha para LOW, essas são as que estão pressionadas.
+
+(adicionar imagem)
+
+A construção do ambos os lados do teclado se deram conforme os esquemáticos de cada um; a seguir vc pode conferir um print de cada um dos esquemáticos. A prototipação foi feita soldando-se os fios manualmente, conforme uma imagem já anexada em [2 - Motivação e Construção do Projeto](#2---motivação-e-construção-do-projeto).
+
 #### 3.2.1 - Teclado Esquerdo
 
-A construção do teclado esquerdo se deu conforme o esquemático aqui, também printado logo abaixo. O circuito é razoavelmente simples...
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/c116f7cd-754f-46b1-9c5a-7c60562bea03)
 
 #### 3.2.2 - Teclado Direito

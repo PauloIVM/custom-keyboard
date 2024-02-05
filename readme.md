@@ -14,7 +14,7 @@ Este é um projeto de software e hardware, onde transformei um Redragon Mitra K5
 
 ## 2 - Motivação e Construção do Projeto
 
-Há alguns meses, meu interesse em aprimorar minhas habilidades de digitação e utilização de atalhos cresceu significativamente. No entanto, a dependência do mouse era (e ainda é, em certa medida) uma barreira considerável. Inicialmente, desenvolvi apenas o mouse analógico, visando ter um dispositivo próximo às mãos no teclado que incentivasse a utilização de atalhos em detrimento do mouse convencional.
+Há alguns meses, meu interesse em aprimorar minhas habilidades de digitação e utilização de atalhos cresceu significativamente. No entanto, a dependência do mouse era (e ainda é, em certa medida) uma barreira considerável. Inicialmente, desenvolvi apenas o mouse analógico, visando manter minhas mãos sempre próximas do teclado; e incentivando a utilização de atalhos em detrimento do mouse convencional.
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/aee006d4-4c1e-4a40-a4d0-c1c7c63bddaf)
 

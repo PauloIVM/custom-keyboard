@@ -34,6 +34,27 @@ E assim se foi. Conforme as imagens a seguir, eu removi a placa do meu teclado, 
 
 ## 3 - Hardware
 
+Segue-se abaixo o material que eu precisei para a montagem do hardware.
+
+Ferramental utilizado para confecção e prototipagem:
+- Estação de solda;
+- Micro-retífica;
+
+Peças compradas:
+- 100 diodos 1n4148;
+- Rolo de fio wire wrap 30awg;
+- 3 arduinos Pro Micro - Atmega32u4;
+
+Peças reutilizadas:
+- Base metálica do Redragon Mitra K551;
+- Keycaps do Redragon Mitra K551;
+- Switches blues do Redragon Mitra K551;
+- Joystics (removidos de uma manete de PS2 antiga);
+- Estrutura de plástico do Redragon Mitra K551;
+
+Alguns cuidados importantes com o hardware:
+- Cuidado ao gravar o código fonte no Atmega32u4; devido à funcionalidade nativa de USB HID, gravar um código quebrado pode fazer com que o dispositivo não seja mais reconhecido pela IDE do arduino. Caso isso ocorra, não se desespere, há solução; o arduino assim que plugado fica cerca de 8 segundos aguardando até rodar o código fonte, você precisará gravar seu código nesse curto intervalo.
+
 ### 3.1 - Mouse
 
 Como já mencionei, esse componente funciona como um mouse. Eu o configurei para que o analógico esquerdo realize scrolls horizontal e vertical; o analógico direito movimenta o cursor do mouse; dos três botões, um é o clique esquerdo do mouse, outro o direito, e por fim o terceiro ajusta a sensibilidade do mouse (como se fosse o ajuste de DPI de mouses tradicionais).

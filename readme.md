@@ -91,11 +91,11 @@ Assim, num primeiro momento, nós podemos fazer uma varredura buscando alguma li
 
 Supondo que encontramos alguma linha com nível lógico LOW, agora nós vamos fazer uma varredura nas colunas e conferir quais colunas mudam o estado da linha. Para isso, inicialmente nós jogamos todas as colunas pra HIGH, conforme a imagem a seguir; isso fará com que independentemente do botão estar aberto ou fechado, o valor da linha se mantenha em HIGH.
 
-(adicionar imagem)
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/dbd4582f-3a57-474d-a48c-b180a10238ba)
 
 Agora, nós vamos iterando coluna por coluna... jogando cada uma delas pra LOW. As colunas que em LOW fizerem mudar o estado da linha para LOW, essas são as que estão pressionadas.
 
-(adicionar imagem)
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/a9aa27f3-0733-4571-9610-cbce00f3d56e)
 
 A construção do ambos os lados do teclado se deram conforme os esquemáticos de cada um; a seguir vc pode conferir um print de cada um dos esquemáticos. A prototipação foi feita soldando-se os fios manualmente, conforme uma imagem já anexada em [2 - Motivação e Construção do Projeto](#2---motivação-e-construção-do-projeto).
 

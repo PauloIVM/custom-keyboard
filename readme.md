@@ -106,6 +106,16 @@ A construção de ambos os lados do teclado seguiu seus respectivos esquemático
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/4b28bf3e-3866-454b-8ad3-f744b0947da3)
 
-## 3 - Software
+## 4 - Software
 
 Um primeiro cuidado importante a se ter é com relação à gravação dos arduinos. Devido à funcionalidade nativa de ser reconhecido como um USB HID, gravar um código defeituoso pode resultar no não reconhecimento do dispositivo pela IDE do Arduino. Se isso ocorrer, não entre em desespero, há uma solução; o Arduino, ao ser plugado, aguarda aproximadamente 8 segundos antes de executar o código fonte; assim, você consegue gravar um novo código nesse curto intervalo.
+
+Dentro da pasta _components_, encontramos três subpastas; cada uma com um arquivo _.ino_ referente a um dos três componentes de hardware.
+
+O _.ino_ em `/components/mouse` pode ser compilado em um Arduino Pro Micro sem problemas, sendo necessário apenas ajustar os pinos conforme o seu projeto.
+
+Os arquivos _.ino_ em `/components/keyboard-left` e `/components/keyboard-right` precisam de uma lib para funcionar, denominada _KeyboardHandler_ e disponível em `/lib/keyboardHandler`. Como esse trecho do código é comum aos dois lados do teclado, optei por organizá-lo no formato de uma biblioteca que precisa ser importada.
+
+O _KeyboardHandler_ pode ser importado de diversas formas. Você pode copiar o código e colar em cada uma das pastas `/components/keyboard-left` e `/components/keyboard-right`; ou ainda gerar um _.zip_ e adicionar a lib pela IDE do arduino; ou, caso esteja usando uma distribuição linux, pode executar um `make build` na raiz do projeto e a biblioteca será automaticamente adicionada à IDE do Arduino.
+
+Adicionado o _KeyboardHandler_, você precisará passar os pinos corretos do seu hardware e passar as camadas com os layouts de teclas que quiser. Perceba que normalmente os teclados não possuem todas as linhas com a mesma quantidade de colunas; mas isso não é um problema, serão apenas teclas na sua matriz que nunca serão clicadas.

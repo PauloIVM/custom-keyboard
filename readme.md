@@ -54,6 +54,8 @@ Peças reutilizadas:
 - Joystics (removidos de uma manete de PS2 antiga);
 - Estrutura de plástico do Redragon Mitra K551;
 
+Caso esteja montando um projeto similar, recomendo fortemente a utilização do Atmega32u4 por conta de sua funcionalidade nativa de ser reconhecido como um dispositivo USB HID. Caso escolha um microcontrolador sem esta funcionalidade, será preciso escrever seus próprios descritores e isso pode dificultar bastante o projeto.
+
 ### 3.1 - Mouse
 
 

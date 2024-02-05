@@ -57,7 +57,7 @@ Peças reutilizadas:
 ### 3.1 - Mouse
 
 
-Como mencionado anteriormente, esse componente atua como um mouse. O analógico esquerdo é destinado a realizar scrolls tanto na direção horizontal quanto vertical, enquanto o analógico direito controla o movimento do cursor do mouse. Dos três botões, um corresponde ao clique esquerdo do mouse, outro ao clique direito, e o terceiro tem a função de ajustar a sensibilidade do mouse, assemelhando-se ao ajuste de DPI em mouses convencionais.
+Como mencionado anteriormente, esse componente atua como um mouse. O analógico esquerdo é destinado a realizar scrolls tanto na direção horizontal quanto vertical, enquanto o analógico direito controla o movimento do cursor. Dos três botões, um corresponde ao clique esquerdo do mouse, outro ao clique direito, e o terceiro tem a função de ajustar a sensibilidade, assemelhando-se ao ajuste de DPI em mouses convencionais.
 
 Para uma compreensão visual detalhada, cada componente de hardware possui um PDF contendo o circuito esquemático. O circuito esquemático específico do mouse pode ser encontrado [aqui](https://github.com/PauloIVM/my-custom-keyboard/blob/master/components/mouse/schematic.pdf) ou na imagem a seguir.
 

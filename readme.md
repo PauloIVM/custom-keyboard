@@ -8,21 +8,21 @@
 
 ## 1 - Introdução
 
-Este é um projeto de software e hardware, onde eu transformei um Redragon Mitra K551 em um teclado split, 100% customizável, com layers e por fim com direito à um componenete especial q é um mouse de analógicos q fiz para usar em conjunto com o teclado.
+Este é um projeto de software e hardware, onde transformei um Redragon Mitra K551 em um teclado split totalmente customizável, com layers e incluindo um componente especial: um mouse de _joystics_.
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/e9e20eb4-6c2c-4bad-bd4b-35b1f91c0921)
 
 ## 2 - Motivação e Construção do Projeto
 
-Há alguns meses eu comecei a me interessar bastante em masterizar minhas habilidades de digitação, uso de atalhos e etc. Contudo, a inércia de recorrer sempre ao mouse era (e ainda é rsrs) muito grande. Então, inicialmente eu montei apenas o mouse de analógicos, com a ideia de ter um mouse próximo das mãos q estão no teclado e que me incentivasse a não querer usá-lo em detrimento dos atalhos do teclado (se há alguma dúvida, a usabilidade desse mouse é bem inferior à de um mouse comum).
+Há alguns meses, meu interesse em aprimorar minhas habilidades de digitação e utilização de atalhos cresceu significativamente. No entanto, a dependência do mouse era (e ainda é, em certa medida) uma barreira considerável. Inicialmente, desenvolvi apenas o mouse analógico, visando ter um dispositivo próximo às mãos no teclado que incentivasse a utilização de atalhos em detrimento do mouse convencional.
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/aee006d4-4c1e-4a40-a4d0-c1c7c63bddaf)
 
-Apenas esse dispositivo, contudo, não teve o efeito q eu gostaria. Ele era muito grande, ficava desconfortável e atrapalhava a digitar no teclado. Por alguns meses eu meio q abandonei o projeto; mas por fim me pareceu q esse mouse se encaixaria melhor em um teclado split.
+Entretanto, esse dispositivo não proporcionou o efeito desejado. Sua dimensão dificultava na digitação. Por alguns meses deixei o projeto de lado; contudo, ao final, percebi que esse mouse se integraria de maneira mais adequada a um teclado split.
 
-Eu comecei a pesquisar mais sobre essa categoria de teclados, e a primeira coisa q me assustou foram os preços (na casa dos 1000 reais). Então por fim pensei: "O que me impede de jogar a eletrônica desse meu Redragon fora e reconstruir um teclado split a partir da carcaça dele? De custos eu teria os arduinos, diodos e fios, algo na casa dos 200 reais, e o resto dos materiais eu tiraria do próprio teclado".
+Assim, comecei a pesquisar mais sobre essa categoria de teclados. O que me surpreendeu foram os preços (na casa dos 1000 reais). Diante disso, pensei: "O que me impede de jogar fora a eletrônica desse Redragon e reconstruir um teclado split a partir da carcaça dele? De custos eu teria os arduinos, diodos e fios, algo na casa dos 200 reais, e o resto dos materiais eu tiraria do próprio teclado".
 
-E assim se foi. Conforme as imagens a seguir, eu removi a placa do meu teclado, parti a carcaça dele em dois, e por fim soldei os switches manualmente num arduino
+Dessa forma, dei continuidade ao projeto. Como evidenciado nas imagens a seguir, procedi com a remoção da placa do meu teclado, dividi a carcaça em dois e, por fim, realizei a soldagem manual dos switches em um Arduino.
 
 ![5](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/0fd848ed-57b7-4765-a498-79e50013f8d8)
 
@@ -34,15 +34,15 @@ E assim se foi. Conforme as imagens a seguir, eu removi a placa do meu teclado, 
 
 ## 3 - Hardware
 
-Segue-se abaixo o material que eu precisei para a montagem do hardware.
+A seguir, apresento a relação de materiais utilizados na montagem do hardware:
 
-Ferramental utilizado para confecção e prototipagem:
+Ferramentas para confecção e prototipagem:
 - Estação de solda;
 - Micro-retífica;
 - Cola quente;
 - Cola super bonder;
 
-Peças compradas:
+Peças adquiridas:
 - 100 diodos 1n4148;
 - Rolo de fio wire wrap 30awg;
 - 3 arduinos Pro Micro - Atmega32u4;
@@ -54,20 +54,18 @@ Peças reutilizadas:
 - Joystics (removidos de uma manete de PS2 antiga);
 - Estrutura de plástico do Redragon Mitra K551;
 
-Alguns cuidados importantes com o hardware:
-- Cuidado ao gravar o código fonte no Atmega32u4; devido à funcionalidade nativa de USB HID, gravar um código quebrado pode fazer com que o dispositivo não seja mais reconhecido pela IDE do arduino. Caso isso ocorra, não se desespere, há solução; o arduino assim que plugado fica cerca de 8 segundos aguardando até rodar o código fonte, você precisará gravar seu código nesse curto intervalo.
-
 ### 3.1 - Mouse
 
-Como já mencionei, esse componente funciona como um mouse. Eu o configurei para que o analógico esquerdo realize scrolls horizontal e vertical; o analógico direito movimenta o cursor do mouse; dos três botões, um é o clique esquerdo do mouse, outro o direito, e por fim o terceiro ajusta a sensibilidade do mouse (como se fosse o ajuste de DPI de mouses tradicionais).
 
-Cada um dos componentes de hardware possui um pdf com o circuito esquemático. O circuito esquemático do mouse [segue aqui](https://github.com/PauloIVM/my-custom-keyboard/blob/master/components/mouse/schematic.pdf).
+Como mencionado anteriormente, esse componente atua como um mouse. O analógico esquerdo é destinado a realizar scrolls tanto na direção horizontal quanto vertical, enquanto o analógico direito controla o movimento do cursor do mouse. Dos três botões, um corresponde ao clique esquerdo do mouse, outro ao clique direito, e o terceiro tem a função de ajustar a sensibilidade do mouse, assemelhando-se ao ajuste de DPI em mouses convencionais.
+
+Para uma compreensão visual detalhada, cada componente de hardware possui um PDF contendo o circuito esquemático. O circuito esquemático específico do mouse pode ser encontrado [aqui](https://github.com/PauloIVM/my-custom-keyboard/blob/master/components/mouse/schematic.pdf) ou na imagem a seguir.
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/32c7e92b-7c6c-4cf5-81fb-abe280bd29d5)
 
-A construção do esquemático acima se deu com muitas gambiarras rsrs. Construí um pequeno suporte de madeira para comportar os botões e os joystics. Soldei os fios no arduino e colei tudo com cola quente e cola super bonder + bicarbonato. Além disso, com o plástico de outras partes do teclado que seriam descartadas, eu fiz um "case" para comportar todo o componente e esconder os fios.
+A construção do componente foi à base de muitas gambiarras. Fiz um pequeno suporte de madeira para comportar os botões e os joystics. Soldei os fios no arduino e colei tudo com cola quente e cola super bonder + bicarbonato. Além disso, com o plástico de outras partes do teclado que seriam descartadas, criei um "case" para comportar todo o componente e esconder os fios.
 
-Um ponto a se destacar é que me ajudou muito ter uma microretífica, tanto para contruir a estrutura de madeira quanto a de plástico.
+Um ponto importante é que me ajudou muito ter uma microretífica.
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/ba36725c-196f-4b5b-ae77-f2a70d3f7711)
 
@@ -77,27 +75,28 @@ Um ponto a se destacar é que me ajudou muito ter uma microretífica, tanto para
 
 ### 3.2 - Teclado
 
-Para a contrução do lado esquerdo e direito do teclado, montei um circuito matricial de diodos para cada um. A ideia de se usar uma matriz é economizar pinos, pois se cada tecla fosse ser um input, então seria preciso mais pinos do que o arduino tem disponível.
+Para a construção tanto do lado esquerdo quanto do lado direito do teclado, montei um circuito matricial de diodos para cada um. A escolha de utilizar uma matriz visa otimizar o uso de pinos, uma vez que, se cada tecla fosse tratada como um input independente, seria necessário mais pinos do que o Arduino dispõe.
 
-Os diodos são necessários para evitar um problema típico de teclados matriciais que é o _ghosting_. Esse problema ocorre quando múltiplas teclas são pressionadas com algum tipo de triangulação, fazendo com que uma não pressionada seja tida como pressionada.
+A inclusão dos diodos é necessária para prevenir um problema comum em teclados matriciais, conhecido como _ghosting_. Esse fenômeno ocorre quando múltiplas teclas são pressionadas de forma triangular, resultando na interpretação de uma tecla não pressionada como se estivesse sendo pressionada.
 
-Explicando o funcionamento do circuito matricial de diodos, considere a simplicicação abaixo:
+Para elucidar o funcionamento do circuito matricial de diodos, considere a simplificação abaixo:
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/32c253bc-aadf-4dfe-8333-4b0b2693ed7d)
 
-Repare que na linha R1 nós temos o botão mais à direita pressionado (fechado). As linhas são inputs PULL_UP e as colunas são outputs (neste momento todas com nível lógico LOW). A linha com algum botão pressionado irá ter o nível lógico LOW; já as linhas com nenhum botão pressionado irão ter o nível lógico HIGH.
 
-Assim, num primeiro momento, nós podemos fazer uma varredura buscando alguma linha com estado lógico LOW. Caso encontremos, paramos essa varredura e começaremos uma inspeção nessa linha para decobrirmos quais colunas nessa linha estão pressionadas.
+Observe que, na linha R1, o botão mais à direita está pressionado (fechado). As linhas são configuradas como inputs PULL_UP, enquanto as colunas são definidas como outputs (todas com nível lógico LOW neste momento). Quando um botão é pressionado, a linha correspondente apresenta nível lógico LOW; caso nenhum botão esteja pressionado, a linha permanece com nível lógico HIGH.
 
-Supondo que encontramos alguma linha com nível lógico LOW, agora nós vamos fazer uma varredura nas colunas e conferir quais colunas mudam o estado da linha. Para isso, inicialmente nós jogamos todas as colunas pra HIGH, conforme a imagem a seguir; isso fará com que independentemente do botão estar aberto ou fechado, o valor da linha se mantenha em HIGH.
+Dessa maneira, em uma primeira etapa, realizamos uma varredura em busca de alguma linha com estado lógico LOW. Ao encontrar, interrompemos essa varredura e iniciamos uma inspeção nessa linha para identificar quais colunas estão sendo pressionadas.
+
+Supondo que encontramos uma linha com nível lógico LOW, seguimos com uma varredura nas colunas para verificar quais alteram o estado da linha. Inicialmente, configuramos todas as colunas para HIGH, como ilustrado na imagem a seguir. Isso garante que, independentemente do botão estar aberto ou fechado, o valor da linha permanece em HIGH.
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/dbd4582f-3a57-474d-a48c-b180a10238ba)
 
-Agora, nós vamos iterando coluna por coluna... jogando cada uma delas pra LOW. As colunas que em LOW fizerem mudar o estado da linha para LOW, essas são as que estão pressionadas.
+Agora iteramos coluna por coluna, definindo cada uma delas como LOW sequencialmente. As colunas que, ao serem definidas como LOW, provocam a mudança do estado da linha para LOW são identificadas como aquelas que estão sendo pressionadas.
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/a9aa27f3-0733-4571-9610-cbce00f3d56e)
 
-A construção do ambos os lados do teclado se deram conforme os esquemáticos de cada um; a seguir vc pode conferir um print de cada um dos esquemáticos. A prototipação foi feita soldando-se os fios manualmente, conforme uma imagem já anexada em [2 - Motivação e Construção do Projeto](#2---motivação-e-construção-do-projeto).
+A construção de ambos os lados do teclado seguiu seus respectivos esquemáticos (seguem logo abaixo). A prototipação foi feita soldando-se os fios manualmente, conforme uma imagem já anexada em [2 - Motivação e Construção do Projeto](#2---motivação-e-construção-do-projeto).
 
 #### 3.2.1 - Teclado Esquerdo
 
@@ -106,3 +105,7 @@ A construção do ambos os lados do teclado se deram conforme os esquemáticos d
 #### 3.2.2 - Teclado Direito
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/4b28bf3e-3866-454b-8ad3-f744b0947da3)
+
+## 3 - Software
+
+Um primeiro cuidado importante a se ter é com relação à gravação dos arduinos. Devido à funcionalidade nativa de ser reconhecido como um USB HID, gravar um código defeituoso pode resultar no não reconhecimento do dispositivo pela IDE do Arduino. Se isso ocorrer, não entre em desespero, há uma solução; o Arduino, ao ser plugado, aguarda aproximadamente 8 segundos antes de executar o código fonte; assim, você consegue gravar um novo código nesse curto intervalo.

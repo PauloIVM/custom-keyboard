@@ -69,6 +69,18 @@ A construção do esquemático acima se deu com muitas gambiarras rsrs. Constru�
 
 Um ponto a se destacar é que me ajudou muito ter uma microretífica, tanto para contruir a estrutura de madeira quanto a de plástico.
 
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/ba36725c-196f-4b5b-ae77-f2a70d3f7711)
+
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/8ea4626b-1666-4587-9f3c-a52034dbadba)
+
+![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/0f9629cb-4dca-4c3a-8606-24b883370142)
+
+### 3.2 - Teclado
+
+Para a contrução do lado esquerdo e direito do teclado, montei um circuito matricial de diodos. A ideia é que se cada tecla fosse ser um input PULL_UP no arduino, então iria necessitar mais pinos do que o arduino tem disponível.
+
+Os diodos são necessários para evitar um problema típico de teclados matriciais que é o _ghosting_. Esse problema ocorre quando múltiplas teclas são pressionadas com algum tipo de triangulação, fazendo com que uma não pressionada seja tida como pressionada.
+
 Explicando o funcionamento do circuito matricial de diodos, considere a simplicicação abaixo:
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/32c253bc-aadf-4dfe-8333-4b0b2693ed7d)
@@ -77,23 +89,11 @@ Repare que na linha R1 nós temos o botão mais à direita pressionado (fechado)
 
 Assim, num primeiro momento, nós podemos fazer uma varredura buscando alguma linha com estado lógico LOW. Caso encontremos, paramos essa varredura e começaremos uma inspeção nessa linha para decobrirmos quais colunas nessa linha estão pressionadas.
 
-![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/ba36725c-196f-4b5b-ae77-f2a70d3f7711)
-
-![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/8ea4626b-1666-4587-9f3c-a52034dbadba)
-
-![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/0f9629cb-4dca-4c3a-8606-24b883370142)
-
-### 3.2 - Teclado Esquerdo
-
-Para a contrução do lado esquerdo e direito do teclado, montei um circuito matricial de diodos. A ideia é que se cada tecla fosse ser um input PULL_UP no arduino, então iria necessitar mais pinos do que o arduino tem disponível.
-
-Os diodos são necessários para evitar um problema típico de teclados matriciais que é o _ghosting_. Esse problema ocorre quando múltiplas teclas são pressionadas com algum tipo de triangulação, fazendo com que uma não pressionada seja tida como pressionada.
-
-
+#### 3.2.1 - Teclado Esquerdo
 
 A construção do teclado esquerdo se deu conforme o esquemático aqui, também printado logo abaixo. O circuito é razoavelmente simples...
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/c116f7cd-754f-46b1-9c5a-7c60562bea03)
 
-### 3.3 - Teclado Direito
+#### 3.2.2 - Teclado Direito
 
 ![image](https://github.com/PauloIVM/my-custom-keyboard/assets/59659732/4b28bf3e-3866-454b-8ad3-f744b0947da3)

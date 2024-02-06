@@ -112,6 +112,8 @@ A construção de ambos os lados do teclado seguiu seus respectivos esquemático
 
 Um primeiro cuidado importante a se ter é com relação à gravação dos arduinos. Devido à funcionalidade nativa de ser reconhecido como um USB HID, gravar um código defeituoso pode resultar no não reconhecimento do dispositivo pela IDE do Arduino. Se isso ocorrer, não entre em desespero, há uma solução; o Arduino, ao ser plugado, aguarda aproximadamente 8 segundos antes de executar o código fonte; assim, você consegue gravar um novo código nesse curto intervalo.
 
+Neste tipo de projeto é bem comum se utilizar o https://qmk.fm/ para gerar o código fonte dos arduinos. É um caminho possível, mas eu preferi escrever todo o meu código, especialmente porque no meu projeto existem algumas peculiaridades que acredito que o qmk não contemple, como os joystics por exemplo.
+
 Dentro da pasta _components_, encontramos três subpastas; cada uma com um arquivo _.ino_ referente a um dos três componentes de hardware.
 
 O _.ino_ em `/components/mouse` pode ser compilado em um Arduino Pro Micro sem problemas, sendo necessário apenas ajustar os pinos conforme o seu projeto.

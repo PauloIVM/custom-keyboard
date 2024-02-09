@@ -3,29 +3,18 @@
 #ifndef KEYBOARD_HANDLER_H
 #define KEYBOARD_HANDLER_H
 
-struct KeyboardHandlerConfig {
-    uint8_t keyLayerUp;
-    uint8_t keyLayerDown;
-    int* rowPins;
-    int* colPins;
-};
-
 template <size_t L_LENGTH, size_t R_LENGTH, size_t C_LENGTH>
 class KeyboardHandler {
     public:
-        KeyboardHandler(const uint8_t (&layers)[L_LENGTH][R_LENGTH][C_LENGTH], const KeyboardHandlerConfig& configs) {
+        KeyboardHandler(const uint8_t (&layers)[L_LENGTH][R_LENGTH][C_LENGTH], int* rowPins, int* colPins) {
             uint8_t*** dynamicLayers = this->toDynamicLayers(layers);
-            KeyboardEmitter emitter = KeyboardEmitter(
-                dynamicLayers,
-                L_LENGTH,
-                configs.keyLayerUp,
-                configs.keyLayerDown
-            );
-            this->configs = configs;
+            KeyboardEmitter emitter = KeyboardEmitter(dynamicLayers, L_LENGTH);
+            this->rowPins = rowPins;
+            this->colPins = colPins;
             this->scanner = KeyboardScanner(
-                configs.rowPins,
+                rowPins,
                 R_LENGTH,
-                configs.colPins,
+                colPins,
                 C_LENGTH,
                 emitter
             );
@@ -35,13 +24,14 @@ class KeyboardHandler {
 
         void begin(void) {
             Keyboard.begin();
-            setPinModes(this->configs.colPins, OUTPUT,        C_LENGTH);
-            setPinModes(this->configs.rowPins, INPUT_PULLUP,  R_LENGTH);
+            setPinModes(this->colPins, OUTPUT,        C_LENGTH);
+            setPinModes(this->rowPins, INPUT_PULLUP,  R_LENGTH);
         }
 
     private:
         KeyboardScanner scanner;
-        KeyboardHandlerConfig configs;
+        int* rowPins;
+        int* colPins;
 
         uint8_t*** toDynamicLayers(const uint8_t (&layers)[L_LENGTH][R_LENGTH][C_LENGTH]) {
             uint8_t*** dynamicMatrix = (uint8_t***)malloc(L_LENGTH * sizeof(uint8_t**));

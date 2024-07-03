@@ -1,4 +1,4 @@
-# My Custom Keyboard ⌨️
+# Custom Keyboard ⌨️
 
 ### Sumário:
 - [1 - Introdução](#1---introdução)

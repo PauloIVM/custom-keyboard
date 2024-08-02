@@ -2,17 +2,24 @@
 #include "Arduino.h"
 #include "pins_arduino.h"
 
-Joystic::Joystic(int xPin, int yPin, int xAnalogCenter, int yAnalogCenter) {
+Joystic::Joystic(int xPin, int yPin, int xAnalogCenter, int yAnalogCenter, void (*onChange)(int x, int y)) {
     this->xPin = xPin;
     this->yPin = yPin;
     this->xAnalogCenter = xAnalogCenter;
     this->yAnalogCenter = yAnalogCenter;
+    this->onChange = onChange;
     this->threshold = 5;
     this->range = 40;
 }
 
 void Joystic::setRange(int range) {
     this->range = range;
+}
+
+void Joystic::exec(void) {
+    int x = readX();
+    int y = readY();
+    onChange(x, y);
 }
 
 int Joystic::readX(void) {

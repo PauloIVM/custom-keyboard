@@ -3,9 +3,21 @@
 #include <Button.h>
 #include <Joystic.h>
 
-#define BUTTON_PIN 2
-Joystic joystic = Joystic(A2, A3, 517, 506);
-Button button = Button(BUTTON_PIN);
+void onButtonPress(void) {
+    Mouse.press(MOUSE_RIGHT);
+}
+
+void onButtonRelease(void) {
+    Mouse.release(MOUSE_RIGHT);
+}
+
+Button button = Button(2, onButtonPress, onButtonRelease);
+
+void onChangeJoystic(int x, int y) {
+    Mouse.move(-x, y, 0);
+}
+
+Joystic joystic = Joystic(A2, A3, 517, 506, onChangeJoystic);
 
 const int rowsLength = 6;
 const int colsLength = 7;
@@ -30,15 +42,11 @@ KeyboardHandler<layersLength, rowsLength, colsLength> keyboardHandler(layers, ro
 void setup(void) {
     keyboardHandler.begin();
     Mouse.begin();
-    pinMode(BUTTON_PIN, INPUT_PULLUP);
-    joystic.setRange(40);
+    button.begin();
 }
 
 void loop(void) {
     keyboardHandler.exec();
-    int x = joystic.readX();
-    int y = joystic.readY();
-    Mouse.move(-x, y, 0);
-    if (button.pressed()) { Mouse.press(MOUSE_RIGHT); }
-    if (button.released()) { Mouse.release(MOUSE_RIGHT); }
+    button.exec();
+    joystic.exec();
 }

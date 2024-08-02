@@ -4,9 +4,26 @@
 #include <Button.h>
 #include <Joystic.h>
 
-#define BUTTON_PIN 2
-Joystic joystic = Joystic(A3, A2, 523, 524);
-Button button = Button(BUTTON_PIN);
+void onButtonPress(void) {
+    Mouse.press();
+}
+
+void onButtonRelease(void) {
+    Mouse.release();
+}
+
+Button button = Button(2, onButtonPress, onButtonRelease);
+
+void onChangeJoystic(int x, int y) {
+    Mouse.move(0, 0, y);
+    if (x != 0) {
+        Keyboard.press(KEY_LEFT_SHIFT);
+        Mouse.move(0, 0, -x);
+        Keyboard.releaseAll();
+    }
+}
+
+Joystic joystic = Joystic(A3, A2, 523, 524, onChangeJoystic);
 
 const int rowsLength = 6;
 const int colsLength = 7;
@@ -50,21 +67,12 @@ void setup(void) {
     keyboardHandler.begin();
     Mouse.begin();
     Keyboard.begin();
-    pinMode(BUTTON_PIN, INPUT_PULLUP);
+    button.begin();
     joystic.setRange(2);
 }
 
 void loop(void) {
     keyboardHandler.exec();
-    int x = joystic.readX();
-    int y = joystic.readY();
-    Mouse.move(0, 0, y);
-    delay(30);
-    if (x != 0) {
-        Keyboard.press(KEY_LEFT_SHIFT);
-        Mouse.move(0, 0, -x);
-        Keyboard.releaseAll();
-    }
-    if (button.pressed()) { Mouse.press(); }
-    if (button.released()) { Mouse.release(); }
+    button.exec();
+    joystic.exec();
 }

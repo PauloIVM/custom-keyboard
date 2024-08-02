@@ -1,8 +1,9 @@
 class Button {
     public:
         Button(int pin);
-        bool clicked(void);
+        bool pressed(void);
+        bool released(void);
     private:
         int pin;
-        bool pressed;
+        bool state;
 };

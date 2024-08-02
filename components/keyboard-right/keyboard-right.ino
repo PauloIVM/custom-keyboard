@@ -1,10 +1,18 @@
 #include <KeyboardHandler.h>
+#include <Mouse.h>
+#include <Keyboard.h>
+#include <Button.h>
+#include <Joystic.h>
+
+#define BUTTON_PIN 2
+Joystic joystic = Joystic(A3, A2, 523, 524);
+Button button = Button(BUTTON_PIN);
 
 const int rowsLength = 6;
 const int colsLength = 7;
 const int layersLength = 3;
 int rowPins[rowsLength] = {9, 4, 8, 6, 7, 5};
-int colPins[colsLength] = {15, 18, 10, 20, 14, 19, 16};
+int colPins[colsLength] = {15, 18, 10, 3, 14, 19, 16};
 
 uint8_t layers[layersLength][rowsLength][colsLength] = {
     // INFO: Layer 1 (insert mode)
@@ -29,9 +37,9 @@ uint8_t layers[layersLength][rowsLength][colsLength] = {
     {
         {KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN},
         {KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN},
-        {KEY_UNKNOWN, KEY_UNKNOWN, KEY_LAYER_1, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN},
         {KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN},
-        {KEY_UNKNOWN, KEY_LAYER_2, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN},
+        {KEY_UNKNOWN, KEY_LAYER_1, KEY_LAYER_2, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN},
+        {KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN},
         {KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN, KEY_UNKNOWN},
     },
 };
@@ -40,8 +48,23 @@ KeyboardHandler<layersLength, rowsLength, colsLength> keyboardHandler(layers, ro
 
 void setup(void) {
     keyboardHandler.begin();
+    Mouse.begin();
+    Keyboard.begin();
+    pinMode(BUTTON_PIN, INPUT_PULLUP);
+    joystic.setRange(2);
 }
 
 void loop(void) {
     keyboardHandler.exec();
+    int x = joystic.readX();
+    int y = joystic.readY();
+    Mouse.move(0, 0, y);
+    delay(30);
+    if (x != 0) {
+        Keyboard.press(KEY_LEFT_SHIFT);
+        Mouse.move(0, 0, -x);
+        Keyboard.releaseAll();
+    }
+    if (button.pressed()) { Mouse.press(); }
+    if (button.released()) { Mouse.release(); }
 }

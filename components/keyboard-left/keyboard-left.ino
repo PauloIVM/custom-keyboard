@@ -1,4 +1,11 @@
 #include <KeyboardHandler.h>
+#include <Mouse.h>
+#include <Button.h>
+#include <Joystic.h>
+
+#define BUTTON_PIN 2
+Joystic joystic = Joystic(A2, A3, 517, 506);
+Button button = Button(BUTTON_PIN);
 
 const int rowsLength = 6;
 const int colsLength = 7;
@@ -18,19 +25,20 @@ uint8_t layers[layersLength][rowsLength][colsLength] = {
     },
 };
 
-KeyboardHandlerConfig configs = {
-    KEY_LAYER_UP,
-    KEY_LAYER_DOWN,
-    rowPins,
-    colPins,
-};
-
-KeyboardHandler<layersLength, rowsLength, colsLength> keyboardHandler(layers, configs);
+KeyboardHandler<layersLength, rowsLength, colsLength> keyboardHandler(layers, rowPins, colPins);
 
 void setup(void) {
     keyboardHandler.begin();
+    Mouse.begin();
+    pinMode(BUTTON_PIN, INPUT_PULLUP);
+    joystic.setRange(40);
 }
 
 void loop(void) {
     keyboardHandler.exec();
+    int x = joystic.readX();
+    int y = joystic.readY();
+    Mouse.move(-x, y, 0);
+    if (button.pressed()) { Mouse.press(MOUSE_RIGHT); }
+    if (button.released()) { Mouse.release(MOUSE_RIGHT); }
 }

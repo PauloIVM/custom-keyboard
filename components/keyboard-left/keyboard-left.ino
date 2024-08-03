@@ -3,6 +3,9 @@
 #include <Button.h>
 #include <Joystic.h>
 
+// TODO: Separar isso em três componentes, mas não em lib, e sim aqui no keyboard... daí podem
+//       ser factories ou coisa do tipo.. ou usar o template-method.
+
 void onButtonPress(void) {
     Mouse.press(MOUSE_RIGHT);
 }

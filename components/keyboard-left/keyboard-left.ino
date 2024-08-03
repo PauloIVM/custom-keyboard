@@ -1,4 +1,26 @@
 #include <KeyboardHandler.h>
+#include <Mouse.h>
+#include <Button.h>
+#include <Joystic.h>
+
+// TODO: Separar isso em três componentes, mas não em lib, e sim aqui no keyboard... daí podem
+//       ser factories ou coisa do tipo.. ou usar o template-method.
+
+void onButtonPress(void) {
+    Mouse.press(MOUSE_RIGHT);
+}
+
+void onButtonRelease(void) {
+    Mouse.release(MOUSE_RIGHT);
+}
+
+Button button = Button(2, onButtonPress, onButtonRelease);
+
+void onChangeJoystic(int x, int y) {
+    Mouse.move(-x, y, 0);
+}
+
+Joystic joystic = Joystic(A2, A3, 517, 506, onChangeJoystic);
 
 const int rowsLength = 6;
 const int colsLength = 7;
@@ -18,19 +40,16 @@ uint8_t layers[layersLength][rowsLength][colsLength] = {
     },
 };
 
-KeyboardHandlerConfig configs = {
-    KEY_LAYER_UP,
-    KEY_LAYER_DOWN,
-    rowPins,
-    colPins,
-};
-
-KeyboardHandler<layersLength, rowsLength, colsLength> keyboardHandler(layers, configs);
+KeyboardHandler<layersLength, rowsLength, colsLength> keyboardHandler(layers, rowPins, colPins);
 
 void setup(void) {
     keyboardHandler.begin();
+    Mouse.begin();
+    button.begin();
 }
 
 void loop(void) {
     keyboardHandler.exec();
+    button.exec();
+    joystic.exec();
 }

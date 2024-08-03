@@ -1,23 +1,26 @@
 #include "Joystic.h"
 #include "Arduino.h"
 #include "pins_arduino.h"
+// #include <stdio.h>
 
-Joystic::Joystic(int xPin, int yPin, int xAnalogCenter, int yAnalogCenter) {
+Joystic::Joystic(int xPin, int yPin, int xAnalogCenter, int yAnalogCenter, void (*onChange)(int x, int y)) {
     this->xPin = xPin;
     this->yPin = yPin;
     this->xAnalogCenter = xAnalogCenter;
     this->yAnalogCenter = yAnalogCenter;
-    this->threshold = 10;
+    this->onChange = onChange;
+    this->threshold = 5;
     this->range = 40;
-}
-
-void Joystic::toggleRange(void) {
-    if (range == 40) { range = 10; }
-    else { range = 40; }
 }
 
 void Joystic::setRange(int range) {
     this->range = range;
+}
+
+void Joystic::exec(void) {
+    int x = readX();
+    int y = readY();
+    onChange(x, y);
 }
 
 int Joystic::readX(void) {
@@ -37,11 +40,16 @@ int Joystic::read(int pin, int analogCenter) {
     int borderUp = analogCenter + threshold;
     if (reading <= borderDown) {
         reading = map(reading, borderDown, 0, 0, -range);
-        return -reading;
+        // TODO: Ao invés de callbacks, usar o pattern template... e aí a func de sensibilidade
+        //       deverá ser sobrescrita pelo classe que implementa essa, que passará a ser uma
+        //       classe abstrata. 
+        // int sensb = abs(reading) > range / 2 ? 2 : 4;
+        return -reading/2;
     }
     if (reading >= borderUp) {
         reading = map(reading, borderUp, 1023, 0, range);
-        return -reading;
+        // int sensb = abs(reading) > range / 2 ? 2 : 4;
+        return -reading/2;
     }
     return 0;
 }
